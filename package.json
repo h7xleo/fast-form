@@ -1,21 +1,37 @@
 {
-  "name": "vue3-json-schema-form",
+  "name": "fast-form",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:core": "TYPE=core vue-cli-service build --target lib --name index --no-clean lib/index.ts",
+    "build:theme": "TYPE=core vue-cli-service build --target lib --name theme/index --no-clean lib/theme/index.ts",
+    "build": "rimraf dist && npm run build:core && npm run build:theme",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit:cov": "vue-cli-service test:unit --coverage",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-errors": "^3.0.0",
+    "ajv-i18n": "^4.2.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "json-schema-merge-allof": "^0.8.1",
+    "jsonpointer": "^5.0.1",
+    "jss": "^10.10.0",
+    "jss-preset-default": "^10.10.0",
+    "lodash.union": "^4.6.0",
+    "vue": "^3.2.13",
+    "vue-jss": "^0.0.4"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/json-schema-merge-allof": "^0.6.1",
+    "@types/lodash.topath": "^4.5.7",
+    "@types/lodash.union": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
@@ -31,7 +47,11 @@
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.0.5",
     "lint-staged": "^11.1.2",
+    "lodash.topath": "^4.5.2",
+    "monaco-editor": "^0.37.1",
+    "monaco-editor-webpack-plugin": "^7.0.1",
     "prettier": "^2.4.1",
+    "rimraf": "^5.0.0",
     "ts-jest": "^27.0.4",
     "typescript": "~4.5.5"
   },
